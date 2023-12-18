@@ -1,21 +1,25 @@
 const add = function(a, b) {
   let answer = a + b;
-  return +(answer.toFixed(7));
+  +(answer.toFixed(7));
+  return answer.toString();
 }
 
 const subtract = function(a, b) {
   let answer = a - b;
-  return +(answer.toFixed(7));
+  +(answer.toFixed(7));
+  return answer.toString();
 }
 
 const multiply = function(a, b) {
   let answer = a * b;
-  return +(answer.toFixed(7));
+  +(answer.toFixed(7));
+  return answer.toString();
 }
 
 const divide = function(a, b) {
   let answer = a / b;
-  return +(answer.toFixed(7));
+  +(answer.toFixed(7));
+  return answer.toString();
 }
 
 const calc = {
@@ -171,6 +175,32 @@ buttonClear.addEventListener("click", () => {
   calc.secondNum = "";
   displayInput.textContent = "";
   displayValue.textContent = "";
+});
+
+const buttonPlusNeg = document.querySelector("#plusneg");
+buttonPlusNeg.addEventListener("click", () => {
+  if (calc.op === "") {
+    calc.firstNum = calc.firstNum * -1;
+  };
+  if (calc.secondNum !== "") {
+    calc.secondNum = calc.secondNum * -1;
+  };
+  displayInput.textContent = calc.firstNum + " " + calc.op + " " + calc.secondNum;
+});
+
+
+const buttonDelete = document.querySelector("#delete");
+buttonDelete.addEventListener("click", () => {
+  if (calc.op === "") {
+    calc.firstNum = calc.firstNum.slice(0, -1);
+  };
+  if (calc.op !== "" && calc.secondNum === "") {
+    calc.op = "";
+  };
+  if (calc.secondNum !== "") {
+    calc.secondNum = calc.secondNum.slice(0, -1);
+  };
+  displayInput.textContent = calc.firstNum + " " + calc.op + " " + calc.secondNum;
 });
 
 const buttonEnter = document.querySelector("#enter");
